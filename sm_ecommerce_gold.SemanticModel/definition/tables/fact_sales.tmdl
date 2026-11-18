@@ -1,0 +1,126 @@
+table fact_sales
+	lineageTag: 0c96bac7-5e6b-42cb-9589-01e2097aea5b
+	sourceLineageTag: [dbo].[fact_sales]
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e413ca17-a4f6-471d-bf89-3883ad53b8a5
+		sourceLineageTag: CustomerKey
+		summarizeBy: count
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateKey
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 1d5b4f29-87b8-498b-b1dc-5b9b074932e1
+		sourceLineageTag: DateKey
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column VendorID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f2022715-e8ba-4656-abf5-faf92f30e0a6
+		sourceLineageTag: VendorID
+		summarizeBy: count
+		sourceColumn: VendorID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PaymentType
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: 331b9df1-1b14-42c5-b431-e51677b27fc6
+		sourceLineageTag: PaymentType
+		summarizeBy: none
+		sourceColumn: PaymentType
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalTrips
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 8d8a587b-1cd6-468f-8fef-a3f20df203bd
+		sourceLineageTag: TotalTrips
+		summarizeBy: sum
+		sourceColumn: TotalTrips
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalPassengers
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2c38dd1f-74c7-4245-9431-f9f1ef0f55ce
+		sourceLineageTag: TotalPassengers
+		summarizeBy: sum
+		sourceColumn: TotalPassengers
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalDistance
+		dataType: double
+		sourceProviderType: float
+		lineageTag: a7e242d5-340a-4484-bb6e-12932639fb7a
+		sourceLineageTag: TotalDistance
+		summarizeBy: sum
+		sourceColumn: TotalDistance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalFareAmount
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 4d0640d7-4686-477e-a215-11a6ee329169
+		sourceLineageTag: TotalFareAmount
+		summarizeBy: sum
+		sourceColumn: TotalFareAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalTipAmount
+		dataType: double
+		sourceProviderType: float
+		lineageTag: f2a0df8c-9a9d-4d6e-b565-a83c333cf2f8
+		sourceLineageTag: TotalTipAmount
+		summarizeBy: sum
+		sourceColumn: TotalTipAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TotalRevenue
+		dataType: double
+		sourceProviderType: float
+		lineageTag: d452b7d3-70ea-49c8-ae6e-ef2414c9654e
+		sourceLineageTag: TotalRevenue
+		summarizeBy: sum
+		sourceColumn: TotalRevenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_sales = entity
+		mode: directLake
+		source
+			entityName: fact_sales
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

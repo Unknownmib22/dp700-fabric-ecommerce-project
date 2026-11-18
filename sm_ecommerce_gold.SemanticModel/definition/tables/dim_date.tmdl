@@ -1,0 +1,67 @@
+table dim_date
+	lineageTag: 11a69cfa-de49-4531-bd7f-1906e94b4923
+	sourceLineageTag: [dbo].[dim_date]
+
+	column DateKey
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 60fc40bd-cbe9-4436-9cde-399e769ab595
+		sourceLineageTag: DateKey
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesYear
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4bbe9c40-402c-421a-9bb3-aff938ef10d5
+		sourceLineageTag: SalesYear
+		summarizeBy: sum
+		sourceColumn: SalesYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesMonth
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9717f4ca-1e9a-44ba-8a47-a36a0c3926fa
+		sourceLineageTag: SalesMonth
+		summarizeBy: sum
+		sourceColumn: SalesMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesQuarter
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: ced25355-5282-44e4-8e3c-f46911a45a3d
+		sourceLineageTag: SalesQuarter
+		summarizeBy: sum
+		sourceColumn: SalesQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: afeedb47-93b0-4a5e-9bac-955aad5b0f1e
+		sourceLineageTag: MonthName
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date = entity
+		mode: directLake
+		source
+			entityName: dim_date
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

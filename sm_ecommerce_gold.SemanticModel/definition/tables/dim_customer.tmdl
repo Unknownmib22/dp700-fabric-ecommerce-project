@@ -1,0 +1,65 @@
+table dim_customer
+	lineageTag: 36554840-ff0a-47f2-a85d-b534acdf3712
+	sourceLineageTag: [dbo].[dim_customer]
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e81495e8-0a57-4e9e-a46e-cdb0a8977d22
+		sourceLineageTag: CustomerKey
+		summarizeBy: count
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 6cc20d75-0f92-43a2-9994-6c1d6a49a9ad
+		sourceLineageTag: CustomerID
+		summarizeBy: count
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerName
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: 28a4416c-17bd-4119-b4ac-5ee03ea53137
+		sourceLineageTag: CustomerName
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: 34f66ec6-c22a-4d3b-8673-e5edd157d55f
+		sourceLineageTag: City
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column LoyaltyTier
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 27bb6313-5e37-466f-8ee7-6b3274dbe669
+		sourceLineageTag: LoyaltyTier
+		summarizeBy: none
+		sourceColumn: LoyaltyTier
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_customer = entity
+		mode: directLake
+		source
+			entityName: dim_customer
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
